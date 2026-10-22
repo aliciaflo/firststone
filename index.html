@@ -57,7 +57,26 @@
                     </svg>
                     <span class="cart-badge" id="cartCount">0</span>
                 </button>
-                <a href="#collection" class="btn-pill" id="headerOrderBtn">Order Now</a>
+                <a href="#collection" class="btn-pill header-order-btn" id="headerOrderBtn">Order Now</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div class="mobile-drawer" id="mobileDrawer">
+            <ul class="mobile-nav-links">
+                <li><a href="#home" class="mobile-nav-link active">Home</a></li>
+                <li><a href="#collection" class="mobile-nav-link">Collection</a></li>
+                <li><a href="#gems" class="mobile-nav-link">Raw Minerals</a></li>
+                <li><a href="#about" class="mobile-nav-link">About Us</a></li>
+                <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+            </ul>
+            <div class="mobile-drawer-cta">
+                <a href="#collection" class="btn-pill" style="width: 100%; text-align: center;">Order A Stone</a>
             </div>
         </div>
     </nav>
@@ -397,6 +416,26 @@
                 header.classList.remove('scrolled');
             }
         });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileDrawer = document.getElementById('mobileDrawer');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        if (mobileMenuBtn && mobileDrawer) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenuBtn.classList.toggle('active');
+                mobileDrawer.classList.toggle('open');
+            });
+
+            // Close mobile menu on clicking any navigation link
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuBtn.classList.remove('active');
+                    mobileDrawer.classList.remove('open');
+                });
+            });
+        }
     </script>
 </body>
 </html>
